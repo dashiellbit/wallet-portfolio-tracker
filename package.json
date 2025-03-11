@@ -1,0 +1,21 @@
+{
+  "name": "wallet-portfolio-tracker",
+  "version": "0.1.0",
+  "description": "Track crypto wallet portfolios across multiple chains",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": ["crypto", "wallet", "portfolio", "ethereum", "web3"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ethers": "^6.9.0",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
