@@ -101,3 +101,28 @@ button:hover {
     flex-direction: column;
     gap: 15px;
 }
+
+.wallet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #0f0f1e;
+    border-radius: 8px;
+    border: 1px solid #2d2d44;
+}
+
+.wallet-item span {
+    font-family: 'Courier New', monospace;
+    color: #e0e0e0;
+}
+
+.wallet-item button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background: #ff4757;
+}
+
+.wallet-item button:hover {
+    background: #e84150;
+}
