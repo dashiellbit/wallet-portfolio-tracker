@@ -45,6 +45,17 @@ function removeWallet(index) {
 }
 
 async function updatePortfolio() {
-    // TODO: implement actual balance fetching
-    console.log('Updating portfolio for:', wallets);
+    if (wallets.length === 0) {
+        document.getElementById('totalValue').textContent = '$0.00';
+        return;
+    }
+
+    let totalValue = 0;
+
+    for (const wallet of wallets) {
+        const walletData = await getWalletValue(wallet);
+        totalValue += walletData.value;
+    }
+
+    document.getElementById('totalValue').textContent = `$${totalValue.toFixed(2)}`;
 }
