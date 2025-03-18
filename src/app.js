@@ -51,11 +51,17 @@ async function updatePortfolio() {
     }
 
     let totalValue = 0;
+    const walletsData = [];
 
     for (const wallet of wallets) {
         const walletData = await getWalletValue(wallet);
         totalValue += walletData.value;
+        walletsData.push(walletData);
     }
 
     document.getElementById('totalValue').textContent = `$${totalValue.toFixed(2)}`;
+
+    if (typeof updateChart === 'function') {
+        updateChart(walletsData);
+    }
 }
