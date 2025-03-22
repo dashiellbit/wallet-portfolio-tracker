@@ -1,4 +1,5 @@
 let portfolioChart = null;
+let historyChart = null;
 
 function initChart() {
     const ctx = document.getElementById('portfolioChart').getContext('2d');
@@ -39,6 +40,56 @@ function initChart() {
     });
 }
 
+function initHistoryChart() {
+    const ctx = document.getElementById('historyChart').getContext('2d');
+
+    historyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Portfolio Value (USD)',
+                data: [],
+                borderColor: '#6c63ff',
+                backgroundColor: 'rgba(108, 99, 255, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#e0e0e0'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        color: '#e0e0e0'
+                    },
+                    grid: {
+                        color: '#2d2d44'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#e0e0e0'
+                    },
+                    grid: {
+                        color: '#2d2d44'
+                    }
+                }
+            }
+        }
+    });
+
+    updateHistoryChart();
+}
+
 function updateChart(walletsData) {
     if (!portfolioChart) {
         initChart();
@@ -54,4 +105,16 @@ function updateChart(walletsData) {
     portfolioChart.update();
 }
 
-window.addEventListener('load', initChart);
+function updateHistoryChart() {
+    if (!historyChart) return;
+
+    const history = getHistoryForChart();
+    historyChart.data.labels = history.labels;
+    historyChart.data.datasets[0].data = history.values;
+    historyChart.update();
+}
+
+window.addEventListener('load', () => {
+    initChart();
+    initHistoryChart();
+});

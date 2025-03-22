@@ -64,4 +64,12 @@ async function updatePortfolio() {
     if (typeof updateChart === 'function') {
         updateChart(walletsData);
     }
+
+    if (typeof saveSnapshot === 'function') {
+        saveSnapshot(walletsData, totalValue);
+    }
+
+    if (typeof updateHistoryChart === 'function') {
+        updateHistoryChart();
+    }
 }
