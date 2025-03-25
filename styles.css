@@ -32,6 +32,7 @@ h1 {
     margin: 40px 0;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 #walletAddress {
@@ -62,6 +63,14 @@ button {
 
 button:hover {
     background: #5a52d5;
+}
+
+.export-btn {
+    background: #27ae60;
+}
+
+.export-btn:hover {
+    background: #229954;
 }
 
 .summary-card {
